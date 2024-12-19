@@ -1,6 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 
 function Footer() {
+  const [hover, setHover] = useState<string | null>(null); // Track hover state for each item
+
   const footerStyles: React.CSSProperties = {
     backgroundColor: "#ffffff",
     color: "#001f3f",
@@ -44,6 +46,10 @@ function Footer() {
     fontSize: "0.9rem",
   };
 
+  // Handle mouse hover events to set the hover state
+  const handleMouseOver = (item: string) => setHover(item);
+  const handleMouseOut = () => setHover(null);
+
   return (
     <footer style={footerStyles}>
       <div style={logoColumnStyles}>
@@ -52,22 +58,80 @@ function Footer() {
 
       <div style={columnStyles}>
         <br />
-        <p>About Us</p>
-        <div style={itemStyles}>Contact Us</div>
-        <div style={itemStyles}>Blogs</div>
+        <a
+          href="#"
+          style={{
+            ...itemStyles,
+            textDecoration: hover === "aboutUs" ? "underline" : "none",
+            color: "inherit",
+          }}
+          onMouseOver={() => handleMouseOver("aboutUs")}
+          onMouseOut={handleMouseOut}
+        >
+          About Us
+        </a>
+        <br />
+        <a
+          href="#"
+          style={{
+            ...itemStyles,
+            textDecoration: hover === "contact" ? "underline" : "none",
+            color: "inherit",
+          }}
+          onMouseOver={() => handleMouseOver("contact")}
+          onMouseOut={handleMouseOut}
+        >
+          Contact Us
+        </a>{" "}
+        <br />
+        <a
+          href="#"
+          style={{
+            ...itemStyles,
+            textDecoration: hover === "blogs" ? "underline" : "none",
+            color: "inherit",
+          }}
+          onMouseOver={() => handleMouseOver("blogs")}
+          onMouseOut={handleMouseOut}
+        >
+          Blogs
+        </a>
       </div>
 
       <div style={columnStyles}>
         <p style={headingStyles}>Help Center</p>
-        <div style={itemStyles}>Why Us?</div>
-        <div style={itemStyles}>FAQs</div>
+        <a
+          href="#"
+          style={{
+            ...itemStyles,
+            textDecoration: hover === "whyUs" ? "underline" : "none",
+            color: "inherit",
+          }}
+          onMouseOver={() => handleMouseOver("whyUs")}
+          onMouseOut={handleMouseOut}
+        >
+          Why Us?
+        </a>{" "}
+        <br />
+        <a
+          href="#"
+          style={{
+            ...itemStyles,
+            textDecoration: hover === "faqs" ? "underline" : "none",
+            color: "inherit",
+          }}
+          onMouseOver={() => handleMouseOver("faqs")}
+          onMouseOut={handleMouseOut}
+        >
+          FAQs
+        </a>
       </div>
 
       <div style={columnStyles}>
         <p style={headingStyles}>Contact Info</p>
-        <div style={itemStyles}>Phone</div>
-        <div style={itemStyles}>Email</div>
-        <div style={itemStyles}>Location</div>
+        <div style={itemStyles}>Phone: 09** *** ****</div>
+        <div style={itemStyles}>Email: CMMS@gmail.com</div>
+        <div style={itemStyles}>Location: Apalit, Pampanga</div>
       </div>
     </footer>
   );

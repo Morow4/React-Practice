@@ -4,8 +4,8 @@ import Footer from "./Footer";
 function LandingPage() {
   const styles: React.CSSProperties = {
     textAlign: "center",
-    background: "linear-gradient(135deg, #001f3f, #004080)", // Navy blue gradient
-    minHeight: "100vh", // Changed from height to minHeight for proper footer placement
+    background: "linear-gradient(135deg, #001f3f, #004080)",
+    minHeight: "100vh",
     color: "white",
     display: "flex",
     flexDirection: "column",
@@ -15,20 +15,23 @@ function LandingPage() {
     marginTop: "20px",
     display: "flex",
     flexDirection: "column",
-    alignItems: "center",
-    justifyContent: "center",
-    flexGrow: 1, // Ensures hero section takes available space
+    alignItems: "flex-end", // Aligning content to the right
+    justifyContent: "center", // Vertically center the content
+    flexGrow: 1,
+    paddingRight: "20px", // Add some space from the right edge
   };
 
   const heroTitleStyles: React.CSSProperties = {
     fontSize: "2.5rem",
     marginBottom: "10px",
+    textAlign: "right", // Aligning the title to the right
   };
 
   const heroSubtitleStyles: React.CSSProperties = {
-    fontSize: "1.2rem",
+    fontSize: "1.5rem",
     fontWeight: 300,
     marginBottom: "20px",
+    textAlign: "right", // Aligning the subtitle to the right
   };
 
   const buttonStyles: React.CSSProperties = {
@@ -48,9 +51,10 @@ function LandingPage() {
       <NavigationBar />
       <div style={heroSectionStyles}>
         <h1 style={heroTitleStyles}>La Verdad Christian College - Apalit</h1>
-        <h4 style={heroSubtitleStyles}>
-          Computerized Maintenance Management System With Facility Scheduling
-        </h4>
+        <h2 style={heroSubtitleStyles}>
+          Computerized Maintenance Management <br /> System With Facility
+          Scheduling
+        </h2>
         <button
           style={buttonStyles}
           onMouseOver={(e) => {
