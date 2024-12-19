@@ -1,12 +1,20 @@
-import ListGroup from "./components/ListGroup";
+import LandingPage from "./components/LandingPage";
 
 function App() {
-  let items = ["Hatdog", "Footlong", "Hambaga", "Furaisu", "Sanwichu"];
   return (
     <div>
-      <ListGroup items={items} heading="Food" />
+      <LandingPage></LandingPage>
     </div>
   );
+
+  //   <div>
+  //   let items = ["Hatdog", "Footlong", "Hambaga", "Furaisu", "Sanwichu"]; return
+  //   (
+  //   <div>
+  //     <ListGroup items={items} heading="Food" />
+  //   </div>
+  //   );
+  // </div>
 }
 
 export default App;
