@@ -15,23 +15,23 @@ function LandingPage() {
     marginTop: "20px",
     display: "flex",
     flexDirection: "column",
-    alignItems: "flex-end", // Aligning content to the right
-    justifyContent: "center", // Vertically center the content
+    alignItems: "flex-end",
+    justifyContent: "center",
     flexGrow: 1,
-    paddingRight: "20px", // Add some space from the right edge
+    paddingRight: "20px",
   };
 
   const heroTitleStyles: React.CSSProperties = {
     fontSize: "2.5rem",
     marginBottom: "10px",
-    textAlign: "right", // Aligning the title to the right
+    textAlign: "right",
   };
 
   const heroSubtitleStyles: React.CSSProperties = {
     fontSize: "1.5rem",
     fontWeight: 300,
     marginBottom: "20px",
-    textAlign: "right", // Aligning the subtitle to the right
+    textAlign: "right",
   };
 
   const buttonStyles: React.CSSProperties = {

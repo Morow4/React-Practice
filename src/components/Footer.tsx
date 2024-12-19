@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 function Footer() {
-  const [hover, setHover] = useState<string | null>(null); // Track hover state for each item
+  const [hover, setHover] = useState<string | null>(null);
 
   const footerStyles: React.CSSProperties = {
     backgroundColor: "#ffffff",
@@ -46,7 +46,6 @@ function Footer() {
     fontSize: "0.9rem",
   };
 
-  // Handle mouse hover events to set the hover state
   const handleMouseOver = (item: string) => setHover(item);
   const handleMouseOut = () => setHover(null);
 
