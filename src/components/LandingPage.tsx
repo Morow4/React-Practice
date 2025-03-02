@@ -1,4 +1,3 @@
-import NavigationBar from "./NavigationBar";
 import Footer from "./Footer";
 
 function LandingPage() {
@@ -48,7 +47,6 @@ function LandingPage() {
 
   return (
     <div style={styles}>
-      <NavigationBar />
       <div style={heroSectionStyles}>
         <h1 style={heroTitleStyles}>La Verdad Christian College - Apalit</h1>
         <h2 style={heroSubtitleStyles}>
