@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import LVlogo from "../assets/LVlogo.jpg"; // Adjust the import path to your image
+import LVlogo from "../assets/LVlogo.jpg"; 
 
 function Footer() {
   const [hover, setHover] = useState<string | null>(null);

@@ -1,56 +1,83 @@
 "use client";
 
-import { useState, CSSProperties } from "react";
-import FullCalendar from "@fullcalendar/react";
-import dayGridPlugin from "@fullcalendar/daygrid";
-import SideBar from "./SideBar"; // ✅ Import Sidebar Component
+import { useState, useEffect } from "react";
+import SideBar from "./SideBar"; // Import the SideBar component
+import SearchFilter from "./SearchFilter";
+import Calendar from "./ui/Calendar";
 
 const Dashboard: React.FC = () => {
-  const [isSidebarOpen, setIsSidebarOpen] = useState(true);
+  const [isSidebarOpen, setIsSidebarOpen] = useState(true); // Sidebar open/close state
   const name = "John Doe"; // Replace with dynamic user data if available
+
+  // Adjust sidebar state based on screen size
+  useEffect(() => {
+    const handleResize = () => {
+      // Collapse sidebar by default on smaller screens (below 768px)
+      if (window.innerWidth <= 768) {
+        setIsSidebarOpen(false);
+      } else {
+        setIsSidebarOpen(true);
+      }
+    };
+
+    // Add event listener for resize
+    window.addEventListener("resize", handleResize);
+
+    // Call once initially to set correct state on page load
+    handleResize();
+
+    // Clean up event listener on component unmount
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
 
   return (
     <div style={styles.container}>
-      {/* ✅ Use Only the Sidebar Component (No Extra Div) */}
-      <SideBar />
+      {/* Sidebar component with visibility controlled by `isSidebarOpen` */}
+      <SideBar isOpen={isSidebarOpen} setIsOpen={setIsSidebarOpen} />
 
-      {/* Main Content - Adjusts to Sidebar */}
+      {/* Main Content */}
       <div
         style={{
           ...styles.mainContent,
-          marginLeft: isSidebarOpen ? "220px" : "70px", // Matches Sidebar Width
+          marginLeft: isSidebarOpen
+            ? "220px"
+            : window.innerWidth <= 768
+            ? "0" // For small screens, the sidebar is collapsed, no margin required
+            : "70px", // For larger screens, use collapsed width of the sidebar
         }}
       >
-        {/* Dashboard Title & Welcome Message */}
-        <div style={styles.header}>
-          <h1 style={styles.title}>Dashboard</h1>
-          <div style={styles.welcomeContainer}>
-            <p style={styles.welcomeText}>
-              Hi {name}, welcome to La Verdad Dashboard
-            </p>
-            <button style={styles.scheduleButton}>Schedule a Facility</button>
-          </div>
+        {/* ✅ Search & Filter Component (Placed Above or Below Dashboard Title based on screen size) */}
+        <div
+          style={{
+            ...styles.filterContainer,
+            position: window.innerWidth <= 768 ? "relative" : "static", // Adjust position based on screen size
+            marginTop: window.innerWidth <= 768 ? "100px" : "0", // Provide some spacing when it's on top of the sidebar
+            zIndex: 1, 
+          }}
+        >
+          <SearchFilter />
         </div>
 
-        {/* Calendar */}
-        <FullCalendar
-          plugins={[dayGridPlugin]}
-          initialView="dayGridMonth"
-          events={[
-            { title: "Meeting", date: "2025-03-10" },
-            { title: "Project Deadline", date: "2025-03-15" },
-            { title: "Team Outing", date: "2025-03-20" },
-          ]}
-          eventContent={(eventInfo) => (
-            <div style={styles.calendarEvent}>{eventInfo.event.title}</div>
-          )}
-        />
+        {/* ✅ Dashboard Title & Welcome Message */}
+        <div style={styles.header}>
+          <br />
+          <h1 style={styles.title}>Dashboard</h1>
+          <p style={styles.welcomeText}>
+            Hi <b>{name}</b>, welcome to La Verdad Dashboard
+          </p>
+        </div>
+
+        {/* ✅ Calendar Component */}
+        <Calendar />
       </div>
     </div>
   );
 };
 
-const styles: { [key: string]: CSSProperties } = {
+// Styling for the Dashboard layout
+const styles: { [key: string]: React.CSSProperties } = {
   container: {
     display: "flex",
     height: "100vh",
@@ -61,46 +88,35 @@ const styles: { [key: string]: CSSProperties } = {
     padding: "20px",
     fontFamily: "Arial, sans-serif",
     transition: "margin-left 0.3s ease",
-    overflowY: "auto",
+    overflowY: "auto" as "auto", // Explicitly typing `overflowY` to avoid type error
     height: "100vh",
     background: "white",
   },
+  filterContainer: {
+    marginBottom: "20px", // Adds spacing below the filter
+    zIndex: 1, // Push it above the sidebar when collapsed
+  },
   header: {
     display: "flex",
-    flexDirection: "column",
-    gap: "10px",
+    flexDirection: "column", // Explicitly defining type for flexDirection
+    gap: "5px",
     marginBottom: "20px",
   },
   title: {
     fontSize: "24px",
     fontWeight: "bold",
   },
-  welcomeContainer: {
-    display: "flex",
-    justifyContent: "space-between",
-    alignItems: "center",
-    flexWrap: "wrap",
-  },
   welcomeText: {
     fontSize: "18px",
   },
-  scheduleButton: {
-    background: "#2ecc71",
-    color: "white",
-    border: "none",
-    padding: "10px 15px",
-    fontSize: "16px",
-    cursor: "pointer",
-    borderRadius: "5px",
-    transition: "background 0.3s ease",
-  },
-  calendarEvent: {
+  toggleButton: {
+    padding: "10px",
     backgroundColor: "#3498db",
     color: "white",
+    border: "none",
     borderRadius: "5px",
-    padding: "5px",
-    fontSize: "14px",
-    textAlign: "center",
+    cursor: "pointer",
+    marginBottom: "20px",
   },
 };
 

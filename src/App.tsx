@@ -4,6 +4,7 @@ import {
   Route,
   useLocation,
 } from "react-router-dom";
+import { useState } from "react";
 import LandingPage from "./components/LandingPage";
 import LoginPage from "./components/LoginPage";
 import NavigationBar from "./components/NavigationBar";
@@ -16,6 +17,9 @@ const AppLayout = () => {
   const showNavBarRoutes = ["/home", "/login", "/registration"];
   const showNavBar = showNavBarRoutes.includes(location.pathname);
 
+  // Add state for the sidebar's open/close state
+  const [isSidebarOpen, setIsSidebarOpen] = useState(true);
+
   return (
     <>
       {showNavBar && <NavigationBar />}
@@ -23,7 +27,14 @@ const AppLayout = () => {
         <Route path="/home" element={<LandingPage />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/registration" element={<RegistrationPage />} />
-        <Route path="/sidebar" element={<SideBar />} />
+
+        {/* Pass the required props to SideBar */}
+        <Route
+          path="/sidebar"
+          element={
+            <SideBar isOpen={isSidebarOpen} setIsOpen={setIsSidebarOpen} />
+          }
+        />
         <Route path="/dashboard" element={<Dashboard />} />
       </Routes>
     </>
