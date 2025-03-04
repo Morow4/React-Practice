@@ -28,7 +28,7 @@ function NavigationBar() {
             <Nav.Link as={Link} to="/home" style={styles.navLink}>
               Home
             </Nav.Link>
-            <Nav.Link href="#about" style={styles.navLink}>
+            <Nav.Link href="#aboutus" style={styles.navLink}>
               About Us
             </Nav.Link>
             <Nav.Link href="#features" style={styles.navLink}>
@@ -50,8 +50,7 @@ function NavigationBar() {
                 Register
               </button>
             </Nav.Link>
-            {/* Inline separator */}
-            <span style={styles.separator}>|</span>
+            {/* No separator */}
             <Nav.Link as={Link} to="/login" style={styles.navLink}>
               <button className="btn btn-primary" style={styles.authButton}>
                 Login
@@ -71,15 +70,15 @@ const styles = {
   },
   brand: {
     color: "#001f3d",
-    fontWeight: "normal", // Removed bold from brand
+    fontWeight: "normal",
     fontSize: "20px",
-    pointerEvents: "none" as "none", // Correctly typed
-    display: "flex", // Use flexbox to align logo and text
-    alignItems: "center", // Vertically center the logo and text
+    pointerEvents: "none" as "none",
+    display: "flex",
+    alignItems: "center",
     paddingLeft: "0",
   },
   logo: {
-    width: "60px", // Increased size of the logo (adjust as needed)
+    width: "60px",
     height: "60px",
     marginRight: "25px",
   },
@@ -88,31 +87,28 @@ const styles = {
   },
   navLink: {
     color: "#001f3d",
-    fontWeight: "normal", // Removed bold from text
-    marginRight: "20px", // Added margin to space out nav items
+    fontWeight: "normal",
+    marginRight: "20px",
   },
   registerLink: {
-    textDecoration: "underline", // Added underline to Register link
-    fontWeight: "normal", // Removed bold from Register text
+    textDecoration: "underline",
+    fontWeight: "normal",
+    marginRight: "5px",
   },
   registerButton: {
-    fontWeight: "600",
+    fontWeight: "400",
     padding: "8px 20px",
-    border: "none", // Removes the border
-    borderRadius: "0", // Optional: Removes any border-radius, if desired
-    display: "inline-block", // Ensures it aligns properly
-    verticalAlign: "middle", // Aligns the button in line with others
-    lineHeight: "normal", // Fixes the vertical misalignment issue
-    background: "transparent", // Ensures it has no background color
-    cursor: "pointer", // Makes it appear clickable
-    textDecoration: "underline", // Optional: Keeps it underlined if needed
+    border: "none",
+    borderRadius: "0",
+    display: "inline-block",
+    verticalAlign: "middle",
+    lineHeight: "normal",
+    background: "transparent",
+    cursor: "pointer",
+    textDecoration: "underline",
+    transition: "none",
   },
-  separator: {
-    color: "#001f3d",
-    fontWeight: "normal",
-    fontSize: "18px",
-    margin: "0 8px", // Slightly smaller margin between buttons
-  },
+
   authButton: {
     fontWeight: "600",
     padding: "8px 20px",
@@ -121,8 +117,9 @@ const styles = {
     lineHeight: "normal",
   },
   authButtons: {
-    display: "flex", // Align buttons in a row
-    alignItems: "center", // Align vertically in the middle
+    display: "flex",
+    alignItems: "center",
+    gap: "0px",
   },
 };
 

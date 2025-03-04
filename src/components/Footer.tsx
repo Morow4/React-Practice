@@ -1,57 +1,51 @@
 import React, { useState } from "react";
-import LVlogo from "../assets/LVlogo.jpg"; 
+import LVlogo from "../assets/LVlogo.jpg";
 
 function Footer() {
   const [hover, setHover] = useState<string | null>(null);
 
-  // Footer container styles
   const footerStyles: React.CSSProperties = {
-    backgroundColor: "#001f3f", // Deep blue background for a professional look
-    color: "#ffffff", // White text color for better readability
-    padding: "40px 20px", // More padding for breathing space
+    backgroundColor: "#001f3f",
+    color: "#ffffff",
+    padding: "40px 20px",
     display: "flex",
-    flexDirection: "row", // Align columns horizontally
+    flexDirection: "row",
     justifyContent: "space-between",
     flexWrap: "wrap",
     borderTop: "2px solid #ffffff",
   };
 
-  // Column styles
   const columnStyles: React.CSSProperties = {
-    flex: "1 1 200px", // Make columns flexible with a minimum width of 200px
+    flex: "1 1 200px",
     margin: "0 15px",
     textAlign: "left",
     paddingBottom: "20px",
   };
 
-  // Logo column styles
   const logoColumnStyles: React.CSSProperties = {
-    flex: "1 1 250px", // Larger size for logo section
+    flex: "1 1 250px",
     marginRight: "20px",
     textAlign: "left",
   };
 
-  // Image styles to make it circular and larger
   const logoStyle: React.CSSProperties = {
-    width: "120px", // Increase the size of the logo
-    height: "120px", // Make the height equal to the width to keep it square
-    borderRadius: "50%", // Make it circular
-    objectFit: "cover", // Ensure the image covers the circular area without distortion
+    width: "120px",
+    height: "120px",
+    borderRadius: "50%",
+    objectFit: "cover",
   };
 
-  // Heading styles
   const headingStyles: React.CSSProperties = {
     fontWeight: "bold",
     marginBottom: "15px",
     fontSize: "1.2rem",
-    color: "#f1f1f1", // Lighter heading color
+    color: "#f1f1f1",
   };
 
-  // Item link styles
   const itemStyles: React.CSSProperties = {
     margin: "8px 0",
     fontSize: "1rem",
-    color: "#d1d1d1", // Light gray text color
+    color: "#d1d1d1",
     textDecoration: "none",
     transition: "all 0.3s ease",
   };

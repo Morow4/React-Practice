@@ -5,8 +5,9 @@ import styled from "styled-components";
 import {
   HiHome,
   HiCalendar,
-  HiClipboardList,
-  HiChat,
+  HiOfficeBuilding,
+  HiClipboardCheck,
+  HiUsers,
   HiCog,
   HiLogout,
 } from "react-icons/hi";
@@ -98,24 +99,27 @@ const SideBar: FC<SideBarProps> = ({ isOpen, setIsOpen }) => {
       </ToggleButton>
 
       {/* Sidebar Items */}
-      <SidebarItem href="#">
+      <SidebarItem href="dashboard">
         <HiHome /> <span>{isOpen && "Dashboard"}</span>
       </SidebarItem>
-      <SidebarItem href="#">
-        <HiCalendar /> <span>{isOpen && "Schedule"}</span>
+      <SidebarItem href="calendar">
+        <HiCalendar /> <span>{isOpen && "Calendar"}</span>
       </SidebarItem>
-      <SidebarItem href="#">
-        <HiClipboardList /> <span>{isOpen && "Manage"}</span>
+      <SidebarItem href="facilitymanagement">
+        <HiOfficeBuilding /> <span>{isOpen && "Facilities Management"}</span>
       </SidebarItem>
-      <SidebarItem href="#">
-        <HiChat /> <span>{isOpen && "Messages"}</span>
+      <SidebarItem href="bookingmanagement">
+        <HiClipboardCheck /> <span>{isOpen && "Booking Management"}</span>
       </SidebarItem>
-      <SidebarItem href="#">
-        <HiCog /> <span>{isOpen && "Settings"}</span>
+      <SidebarItem href="usermanagement">
+        <HiUsers /> <span>{isOpen && "User Management"}</span>
       </SidebarItem>
 
-      {/* Logout at the bottom */}
+      {/* Settings and Logout at the bottom */}
       <div style={{ marginTop: "auto" }}>
+        <SidebarItem href="#">
+          <HiCog /> <span>{isOpen && "Settings"}</span>
+        </SidebarItem>
         <SidebarItem href="#">
           <HiLogout /> <span>{isOpen && "Logout"}</span>
         </SidebarItem>

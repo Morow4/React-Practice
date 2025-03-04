@@ -1,46 +1,46 @@
 import { useNavigate } from "react-router-dom";
-import Footer from "./Footer";
-import LVbuilding from "../assets/LVbuilding.jpg"; // Import the image
+// import Footer from "./Footer";
+import LVbuilding from "../assets/LVbuilding.jpg";
+import AboutUs from "./AboutUs";
 
 function LandingPage() {
-  const navigate = useNavigate(); // Hook for navigation
-
+  const navigate = useNavigate();
   const styles: React.CSSProperties = {
     textAlign: "center",
-    backgroundImage: `url(${LVbuilding})`, // Set the background image
-    backgroundSize: "cover", // Cover the entire viewport
-    backgroundPosition: "center", // Center the background image
-    backgroundRepeat: "no-repeat", // Prevent repeating
-    minHeight: "100vh", // Ensure the background covers the full viewport
+    backgroundImage: `url(${LVbuilding})`,
+    backgroundSize: "cover",
+    backgroundPosition: "center",
+    backgroundRepeat: "no-repeat",
+    minHeight: "100vh", // Ensures that the landing page takes up the full height of the viewport
     color: "white",
     display: "flex",
-    flexDirection: "column", // Flex column direction
-    justifyContent: "flex-start", // Align content from top
+    flexDirection: "column",
+    justifyContent: "center", // Centers content vertically in the landing page
   };
 
   const heroSectionStyles: React.CSSProperties = {
     display: "flex",
     flexDirection: "column",
-    alignItems: "center", // Center the content horizontally
-    justifyContent: "center", // Center the content vertically
-    textAlign: "center", // Ensures text is centered
-    flexGrow: 1, // Make the hero section take as much space as possible
-    padding: "20px", // Some padding around the content
-    backgroundColor: "rgba(0, 0, 0, 0.5)", // Add a dark overlay for better text visibility
-    width: "100%", // Ensure it covers the full width
+    alignItems: "center",
+    justifyContent: "center",
+    textAlign: "center",
+    flexGrow: 1,
+    // padding: "50px",
+    backgroundColor: "rgba(0, 0, 0, 0.5)",
+    width: "100%",
   };
 
   const heroTitleStyles: React.CSSProperties = {
     fontSize: "2.5rem",
     marginBottom: "10px",
-    textAlign: "center", // Align title to center
+    textAlign: "center",
   };
 
   const heroSubtitleStyles: React.CSSProperties = {
     fontSize: "1.5rem",
     fontWeight: 300,
     marginBottom: "20px",
-    textAlign: "center", // Align subtitle to center
+    textAlign: "center",
   };
 
   const buttonStyles: React.CSSProperties = {
@@ -55,30 +55,49 @@ function LandingPage() {
     transition: "all 0.3s ease",
   };
 
+  // const aboutUsWrapperStyles: React.CSSProperties = {
+  //   padding: "10px",
+  //   display: "flex",
+  //   justifyContent: "center",
+  //   flexDirection: "column",
+  //   backgroundColor: "#f4f4f4",
+  //   borderRadius: "8px",
+  //   boxShadow: "0 4px 10px rgba(0, 0, 0, 0.1)",
+  //   marginTop: "40px",
+  //   width: "100%",
+  //   boxSizing: "border-box",
+  // };
+
   return (
-    <div style={styles}>
-      <div style={heroSectionStyles}>
-        <h1 style={heroTitleStyles}>
-          COMPUTERIZED MAINTENANCE <br /> MANAGEMENT SYSTEM
-        </h1>
-        <h2> with Facility Scheduling</h2>
-        <br />
-        <button
-          style={buttonStyles}
-          onMouseOver={(e) => {
-            e.currentTarget.style.backgroundColor = "#f1f1f1";
-            e.currentTarget.style.color = "black";
-          }}
-          onMouseOut={(e) => {
-            e.currentTarget.style.backgroundColor = "white";
-            e.currentTarget.style.color = "#004080";
-          }}
-          onClick={() => navigate("/registration")}
-        >
-          Get Started
-        </button>
+    <div>
+      {/* Hero Section (Landing Page) */}
+      <div style={styles}>
+        <div style={heroSectionStyles}>
+          <h1 style={heroTitleStyles}>
+            COMPUTERIZED MAINTENANCE <br /> MANAGEMENT SYSTEM
+          </h1>
+          <h2 style={heroSubtitleStyles}>with Facility Scheduling</h2>
+          <br />
+          <button
+            style={buttonStyles}
+            onMouseOver={(e) => {
+              e.currentTarget.style.backgroundColor = "#f1f1f1";
+              e.currentTarget.style.color = "black";
+            }}
+            onMouseOut={(e) => {
+              e.currentTarget.style.backgroundColor = "white";
+              e.currentTarget.style.color = "#004080";
+            }}
+            onClick={() => navigate("/registration")}
+          >
+            Get Started
+          </button>
+        </div>
       </div>
-      {/* <Footer /> {} */}
+
+      <div>
+        <AboutUs />
+      </div>
     </div>
   );
 }

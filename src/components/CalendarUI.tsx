@@ -3,13 +3,16 @@
 import { useState, useEffect } from "react";
 import SideBar from "./SideBar";
 import SearchFilter from "./SearchFilter";
+import Calendar from "./ui/Calendar";
 
-const Dashboard: React.FC = () => {
-  const [isSidebarOpen, setIsSidebarOpen] = useState(true);
-  const name = "John Doe"; // Will replace by dynamic varible later.
+const CalendarUI: React.FC = () => {
+  const [isSidebarOpen, setIsSidebarOpen] = useState(true); // Sidebar open/close state
+  const name = "John Doe"; // Replace with dynamic user data if available
 
+  // Adjust sidebar state based on screen size
   useEffect(() => {
     const handleResize = () => {
+      // Collapse sidebar by default on smaller screens (below 768px)
       if (window.innerWidth <= 768) {
         setIsSidebarOpen(false);
       } else {
@@ -17,10 +20,13 @@ const Dashboard: React.FC = () => {
       }
     };
 
+    // Add event listener for resize
     window.addEventListener("resize", handleResize);
 
+    // Call once initially to set correct state on page load
     handleResize();
 
+    // Clean up event listener on component unmount
     return () => {
       window.removeEventListener("resize", handleResize);
     };
@@ -57,11 +63,14 @@ const Dashboard: React.FC = () => {
         {/* ✅ Dashboard Title & Welcome Message */}
         <div style={styles.header}>
           <br />
-          <h1 style={styles.title}>Dashboard</h1>
-          <p style={styles.welcomeText}>
+          <h1>Calendar</h1>
+          {/* <p style={styles.welcomeText}>
             Hi <b>{name}</b>, welcome to La Verdad Dashboard
-          </p>
+          </p> */}
         </div>
+
+        {/* ✅ Calendar Component */}
+        <Calendar />
       </div>
     </div>
   );
@@ -110,4 +119,4 @@ const styles: { [key: string]: React.CSSProperties } = {
   },
 };
 
-export default Dashboard;
+export default CalendarUI;

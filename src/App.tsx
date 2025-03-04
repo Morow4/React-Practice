@@ -11,6 +11,9 @@ import NavigationBar from "./components/NavigationBar";
 import RegistrationPage from "./components/RegistrationPage";
 import SideBar from "./components/SideBar";
 import Dashboard from "./components/Dashboard";
+import CalendarUI from "./components/CalendarUI";
+import FMUI from "./components/FMUI";
+import AboutUs from "./components/AboutUs";
 
 const AppLayout = () => {
   const location = useLocation();
@@ -27,6 +30,7 @@ const AppLayout = () => {
         <Route path="/home" element={<LandingPage />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/registration" element={<RegistrationPage />} />
+        <Route path="/aboutus" element={<AboutUs />} />
 
         {/* Pass the required props to SideBar */}
         <Route
@@ -36,6 +40,8 @@ const AppLayout = () => {
           }
         />
         <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/calendar" element={<CalendarUI />} />
+        <Route path="/facilitymanagement" element={<FMUI />} />
       </Routes>
     </>
   );
