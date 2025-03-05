@@ -1,3 +1,4 @@
+// import React from "react";
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
@@ -89,6 +90,10 @@ const styles = {
     color: "#001f3d",
     fontWeight: "normal",
     marginRight: "20px",
+    transition: "text-decoration 0.3s ease",
+  },
+  navLinksHover: {
+    // textDecoration: "underline",
   },
   registerLink: {
     textDecoration: "underline",
@@ -97,7 +102,7 @@ const styles = {
   },
   registerButton: {
     fontWeight: "400",
-    padding: "8px 20px",
+    padding: "0px",
     border: "none",
     borderRadius: "0",
     display: "inline-block",
@@ -107,10 +112,16 @@ const styles = {
     cursor: "pointer",
     textDecoration: "underline",
     transition: "none",
+    color: "darkblue",
+  },
+
+  registerButtonHover: {
+    backgroundColor: "transparent",
+    color: "#001f3d",
   },
 
   authButton: {
-    fontWeight: "600",
+    fontWeight: "500",
     padding: "8px 20px",
     display: "inline-block",
     verticalAlign: "middle",

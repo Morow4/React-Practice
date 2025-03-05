@@ -9,7 +9,8 @@ function RegistrationPage() {
     gender: "",
     email: "",
     contactNumber: "",
-    role: "",
+    password: "",
+    confirmPassword: "",
     agreeToPrivacyPolicy: false, // Add state for checkbox
   });
 
@@ -19,21 +20,24 @@ function RegistrationPage() {
   const handleInputChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
   ) => {
-    const { name, value, type, checked } = e.target;
+    const { name, value, type, checked } = e.target as HTMLInputElement;
 
     // Ensure type is cast correctly for checkboxes
     if (type === "checkbox") {
-      // Handle checkbox inputs
       setFormData({
         ...formData,
         [name]: checked,
       });
     } else {
-      // Handle other types of inputs (like text, email, etc.)
       setFormData({
         ...formData,
         [name]: value,
       });
+    }
+
+    // Clear error message as user modifies input
+    if (error) {
+      setError(null);
     }
   };
 
@@ -45,10 +49,12 @@ function RegistrationPage() {
       gender,
       email,
       contactNumber,
-      role,
+      password,
+      confirmPassword,
       agreeToPrivacyPolicy,
     } = formData;
 
+    // Check if all fields are filled
     if (
       !firstName ||
       !lastName ||
@@ -56,7 +62,8 @@ function RegistrationPage() {
       !gender ||
       !email ||
       !contactNumber ||
-      !role ||
+      !password ||
+      !confirmPassword ||
       !agreeToPrivacyPolicy
     ) {
       setError(
@@ -65,7 +72,29 @@ function RegistrationPage() {
       return false;
     }
 
-    setError(null);
+    // Contact number validation (must start with 09 and have 11 digits)
+    const contactNumberPattern = /^09\d{9}$/;
+    if (!contactNumberPattern.test(contactNumber)) {
+      setError("Contact number must be 11 digits and start with 09.");
+      return false;
+    }
+
+    // Password validation: minimum 8 characters, 1 uppercase, and 1 number
+    const passwordPattern = /^(?=.*[A-Z])(?=.*\d)[A-Za-z\d]{8,}$/;
+    if (!passwordPattern.test(password)) {
+      setError(
+        "Password must be at least 8 characters long, include 1 uppercase letter, and 1 number."
+      );
+      return false;
+    }
+
+    // Confirm password validation
+    if (password !== confirmPassword) {
+      setError("Password and Confirm Password do not match.");
+      return false;
+    }
+
+    setError(null); // Clear error if validation passes
     return true;
   };
 
@@ -151,7 +180,7 @@ function RegistrationPage() {
                 <option value="">Select Gender</option>
                 <option value="male">Male</option>
                 <option value="female">Female</option>
-                <option value="other">Other</option>
+                {/* <option value="other">Other</option> */}
               </select>
             </div>
           </div>
@@ -169,10 +198,10 @@ function RegistrationPage() {
                 onChange={handleInputChange}
                 style={styles.input}
                 required
-                pattern="^\+63\d{9}$"
-                placeholder="+63"
+                pattern="^09\d{9}$"
+                placeholder="09XXXXXXXXX"
                 maxLength={11}
-                title="Contact number should be 10 digits and start with +63."
+                title="Contact number must be 11 digits and start with 09."
               />
             </div>
 
@@ -192,27 +221,37 @@ function RegistrationPage() {
             </div>
           </div>
 
-          <div style={{ ...styles.inputGroup, width: "50%" }}>
-            {" "}
-            {/* Added width: 50% here */}
-            <label htmlFor="role" style={styles.label}>
-              Role
-            </label>
-            <select
-              id="role"
-              name="role"
-              value={formData.role}
-              onChange={handleInputChange}
-              style={styles.input}
-              required
-            >
-              <option value="">Select Role</option>
-              <option value="user">User</option>
-              <option value="admin">Admin</option>
-            </select>
-          </div>
+          <div style={styles.row}>
+            <div style={styles.inputGroup}>
+              <label htmlFor="password" style={styles.label}>
+                Password
+              </label>
+              <input
+                type="password"
+                id="password"
+                name="password"
+                value={formData.password}
+                onChange={handleInputChange}
+                style={styles.input}
+                required
+              />
+            </div>
 
-          <br />
+            <div style={styles.inputGroup}>
+              <label htmlFor="confirmPassword" style={styles.label}>
+                Confirm Password
+              </label>
+              <input
+                type="password"
+                id="confirmPassword"
+                name="confirmPassword"
+                value={formData.confirmPassword}
+                onChange={handleInputChange}
+                style={styles.input}
+                required
+              />
+            </div>
+          </div>
 
           <div style={styles.checkboxGroup}>
             <input
@@ -230,9 +269,6 @@ function RegistrationPage() {
           </div>
 
           <div style={styles.buttonGroup}>
-            {/* <button type="button" style={styles.cancelButton}>
-              Cancel
-            </button> */}
             <button
               type="submit"
               style={styles.submitButton}

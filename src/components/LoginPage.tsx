@@ -1,22 +1,45 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
+import lvBuilding from "../assets/Lvbuilding.jpg";
 
 function LoginPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const navigate = useNavigate();
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+
+    // Validate email and password fields
     if (!email || !password) {
       setError("Please enter both email and password.");
       return;
     }
-    console.log("Submitted:", { email, password });
-    setEmail("");
-    setPassword("");
-    setError("");
+
+    // Email validation: check if it's a valid email format
+    const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+    if (!emailPattern.test(email)) {
+      setError("Please enter a valid email address.");
+      return;
+    }
+
+    // Simulate form submission and API request
+    setIsSubmitting(true);
+
+    setTimeout(() => {
+      console.log("Logged in:", { email, password });
+      setEmail("");
+      setPassword("");
+      setError("");
+      setIsSubmitting(false);
+
+      navigate("/dashboard");
+    }, 2000);
   };
 
   return (
@@ -25,6 +48,7 @@ function LoginPage() {
       <FormContainer>
         <FormCard>
           <h2>Sign In</h2>
+          <br/>
           <form onSubmit={handleSubmit}>
             {error && <ErrorMessage>{error}</ErrorMessage>}
             <FormGroup>
@@ -51,7 +75,9 @@ function LoginPage() {
               />
             </FormGroup>
 
-            <Button type="submit">Login</Button>
+            <Button type="submit" disabled={isSubmitting}>
+              {isSubmitting ? "Logging in..." : "Login"}
+            </Button>
           </form>
           <Footer>
             <p>
@@ -77,12 +103,12 @@ const LoginContainer = styled.div`
 `;
 
 const FormContainer = styled.div`
-  flex: 1; /* Takes 50% width */
+  flex: 1;
   display: flex;
   justify-content: center;
   align-items: center;
   padding: 40px;
-  background-color: #f1f1f1f1;
+  background-color: #ffffff;
 `;
 
 const FormCard = styled.div`
@@ -90,7 +116,7 @@ const FormCard = styled.div`
   padding: 40px;
   width: 100%;
   max-width: 400px;
-  text-align: left; /* Align text to the left */
+  text-align: left;
 `;
 
 const FormGroup = styled.div`
@@ -111,6 +137,7 @@ const Input = styled.input`
   border-radius: 4px;
   font-size: 16px;
   margin-top: 5px;
+  transition: border-color 0.3s ease-in-out;
   &:focus {
     border-color: #4d90fe;
     outline: none;
@@ -126,9 +153,13 @@ const Button = styled.button`
   border-radius: 4px;
   font-size: 16px;
   cursor: pointer;
-  transition: background-color 0.3s;
+  transition: background-color 0.3s ease-in-out;
   &:hover {
     background-color: #357ae8;
+  }
+  &:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
   }
 `;
 
@@ -152,12 +183,13 @@ const SignUpLink = styled(Link)`
 `;
 
 const ImageContainer = styled.div`
-  flex: 1; /* Takes 50% width */
-  background-image: url("/assets/Lvbuilding.jpg"); /* Make sure the image path is correct */
+  flex: 1;
+  background-image: url(${lvBuilding});
   background-size: cover;
   background-position: center;
   height: 100vh;
   width: 100%;
+  z-index: 1;
 `;
 
 export default LoginPage;

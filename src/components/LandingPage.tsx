@@ -1,7 +1,8 @@
 import { useNavigate } from "react-router-dom";
-// import Footer from "./Footer";
+import Footer from "./Footer";
 import LVbuilding from "../assets/LVbuilding.jpg";
 import AboutUs from "./AboutUs";
+import Features from "./Features";
 
 function LandingPage() {
   const navigate = useNavigate();
@@ -11,11 +12,11 @@ function LandingPage() {
     backgroundSize: "cover",
     backgroundPosition: "center",
     backgroundRepeat: "no-repeat",
-    minHeight: "100vh", // Ensures that the landing page takes up the full height of the viewport
+    minHeight: "100vh",
     color: "white",
     display: "flex",
     flexDirection: "column",
-    justifyContent: "center", // Centers content vertically in the landing page
+    justifyContent: "center",
   };
 
   const heroSectionStyles: React.CSSProperties = {
@@ -95,8 +96,15 @@ function LandingPage() {
         </div>
       </div>
 
-      <div>
+      <div id="aboutus">
         <AboutUs />
+      </div>
+
+      <div id="features">
+        <Features></Features>
+      </div>
+      <div>
+        <Footer></Footer>
       </div>
     </div>
   );

@@ -6,7 +6,7 @@ import SearchFilter from "./SearchFilter";
 
 const Dashboard: React.FC = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
-  const name = "John Doe"; // Will replace by dynamic varible later.
+  const name = "Coop Hull"; // Will replace by dynamic varible later.
 
   useEffect(() => {
     const handleResize = () => {
@@ -59,7 +59,7 @@ const Dashboard: React.FC = () => {
           <br />
           <h1 style={styles.title}>Dashboard</h1>
           <p style={styles.welcomeText}>
-            Hi <b>{name}</b>, welcome to La Verdad Dashboard
+            Hi <b>{name}</b>, Welcome to La Verdad Dashboard
           </p>
         </div>
       </div>

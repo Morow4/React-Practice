@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import lvBuilding from "../assets/Lvbuilding.jpg"; // Correct import path
+import lvBuilding from "../assets/Lvbuilding.jpg";
 
 // Styled components for layout and styling
 const AboutUsWrapper = styled.div`
@@ -15,7 +15,7 @@ const AboutUsWrapper = styled.div`
   max-width: 100%;
   height: 100%;
   width: 100%; /* Ensures the component takes the full available width */
-  
+
   /* Responsive Design: When screen width is <= 768px, stack items vertically */
   @media (max-width: 768px) {
     flex-direction: column;
@@ -55,7 +55,7 @@ const TextContainer = styled.div`
 
 const Header = styled.h2`
   font-size: 32px;
-  color: #007bff;
+  color: darkblue;
   margin-bottom: 20px;
 
   /* Responsive Design: Reduce font size on small screens */
@@ -68,6 +68,7 @@ const Text = styled.p`
   font-size: 16px;
   line-height: 1.6;
   color: #555;
+  text-align: justify;
 
   /* Responsive Design: Reduce font size for small screens */
   @media (max-width: 768px) {
@@ -82,12 +83,19 @@ const AboutUs: React.FC = () => {
       <TextContainer>
         <Header>About Us</Header>
         <Text>
-          Welcome to our company! We are dedicated to providing the best
-          services and solutions to our customers. Our team consists of highly
-          skilled professionals who are passionate about making a positive
-          impact on the industry. We strive for excellence in everything we do
-          and aim to create lasting relationships with our clients. Learn more
-          about our vision and values below.
+          Computerized Maintenance Management System (CMMS) with Facility
+          Scheduling is a robust solution designed to streamline the management
+          and maintenance of facilities and equipment. By integrating advanced
+          scheduling features, this system enables businesses to plan, track,
+          and optimize their maintenance tasks effectively. <br /> The CMMS
+          automates routine maintenance schedules, tracks work orders, and
+          allows managers to oversee the maintenance process with ease. Coupled
+          with facility scheduling, it helps coordinate the usage of spaces and
+          resources, ensuring seamless operations and minimizing downtime.
+          Whether you're handling equipment repairs, preventive maintenance, or
+          managing multiple facilities, our system improves efficiency, reduces
+          costs, and ensures a higher standard of service across all your
+          operations.
         </Text>
       </TextContainer>
     </AboutUsWrapper>

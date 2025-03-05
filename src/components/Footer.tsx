@@ -1,145 +1,189 @@
 import React, { useState } from "react";
+import styled from "styled-components";
 import LVlogo from "../assets/LVlogo.jpg";
 
 function Footer() {
   const [hover, setHover] = useState<string | null>(null);
 
-  const footerStyles: React.CSSProperties = {
-    backgroundColor: "#001f3f",
-    color: "#ffffff",
-    padding: "40px 20px",
-    display: "flex",
-    flexDirection: "row",
-    justifyContent: "space-between",
-    flexWrap: "wrap",
-    borderTop: "2px solid #ffffff",
-  };
-
-  const columnStyles: React.CSSProperties = {
-    flex: "1 1 200px",
-    margin: "0 15px",
-    textAlign: "left",
-    paddingBottom: "20px",
-  };
-
-  const logoColumnStyles: React.CSSProperties = {
-    flex: "1 1 250px",
-    marginRight: "20px",
-    textAlign: "left",
-  };
-
-  const logoStyle: React.CSSProperties = {
-    width: "120px",
-    height: "120px",
-    borderRadius: "50%",
-    objectFit: "cover",
-  };
-
-  const headingStyles: React.CSSProperties = {
-    fontWeight: "bold",
-    marginBottom: "15px",
-    fontSize: "1.2rem",
-    color: "#f1f1f1",
-  };
-
-  const itemStyles: React.CSSProperties = {
-    margin: "8px 0",
-    fontSize: "1rem",
-    color: "#d1d1d1",
-    textDecoration: "none",
-    transition: "all 0.3s ease",
-  };
-
   const handleMouseOver = (item: string) => setHover(item);
   const handleMouseOut = () => setHover(null);
 
   return (
-    <footer style={footerStyles}>
+    <FooterContainer>
       {/* Logo Column with Image */}
-      <div style={logoColumnStyles}>
-        <img src={LVlogo} alt="LV Logo" style={logoStyle} />
-      </div>
+      <LogoColumn>
+        <img src={LVlogo} alt="LV Logo" />
+      </LogoColumn>
 
       {/* About Section */}
-      <div style={columnStyles}>
-        <p style={headingStyles}>Company</p>
-        <a
-          href="#"
-          style={{
-            ...itemStyles,
-            textDecoration: hover === "aboutUs" ? "underline" : "none",
-          }}
+      <Column>
+        <SectionTitle>Company</SectionTitle>
+        <LinkItem
+          href="#aboutus"
           onMouseOver={() => handleMouseOver("aboutUs")}
           onMouseOut={handleMouseOut}
+          hover={hover === "aboutUs"}
         >
           About Us
-        </a>
-        <a
+        </LinkItem>
+        <LinkItem
           href="#"
-          style={{
-            ...itemStyles,
-            textDecoration: hover === "contact" ? "underline" : "none",
-          }}
           onMouseOver={() => handleMouseOver("contact")}
           onMouseOut={handleMouseOut}
+          hover={hover === "contact"}
         >
-          <br />
           Contact Us
-        </a>
-
-        <br />
-
-        <a
+        </LinkItem>
+        <LinkItem
           href="#"
-          style={{
-            ...itemStyles,
-            textDecoration: hover === "blogs" ? "underline" : "none",
-          }}
           onMouseOver={() => handleMouseOver("blogs")}
           onMouseOut={handleMouseOut}
+          hover={hover === "blogs"}
         >
           Blogs
-        </a>
-      </div>
+        </LinkItem>
+      </Column>
 
       {/* Help Center Section */}
-      <div style={columnStyles}>
-        <p style={headingStyles}>Help Center</p>
-        <a
+      <Column>
+        <SectionTitle>Help Center</SectionTitle>
+        <LinkItem
           href="#"
-          style={{
-            ...itemStyles,
-            textDecoration: hover === "whyUs" ? "underline" : "none",
-          }}
           onMouseOver={() => handleMouseOver("whyUs")}
           onMouseOut={handleMouseOut}
+          hover={hover === "whyUs"}
         >
           Why Us?
-        </a>
-
-        <br />
-
-        <a
+        </LinkItem>
+        <LinkItem
           href="#"
-          style={{
-            ...itemStyles,
-            textDecoration: hover === "faqs" ? "underline" : "none",
-          }}
           onMouseOver={() => handleMouseOver("faqs")}
           onMouseOut={handleMouseOut}
+          hover={hover === "faqs"}
         >
           FAQs
-        </a>
-      </div>
+        </LinkItem>
+      </Column>
 
       {/* Contact Info Section */}
-      <div style={columnStyles}>
-        <p style={headingStyles}>Contact Info</p>
-        <div style={itemStyles}>Email: CMMS@gmail.com</div>
-        <div style={itemStyles}>Location: Apalit, Pampanga</div>
-      </div>
-    </footer>
+      <Column>
+        <SectionTitle>Contact Info</SectionTitle>
+        <ContactItem>Email: CMMS@gmail.com</ContactItem>
+        <ContactItem>Location: Apalit, Pampanga</ContactItem>
+      </Column>
+    </FooterContainer>
   );
 }
+
+const FooterContainer = styled.footer`
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding: 40px 20px;
+  background-color: transparent;
+  border-top: 100px solid #ffffff;
+  max-width: 1200px;
+  margin: 0 auto;
+  box-sizing: border-box;
+
+  @media (max-width: 1200px) {
+    padding: 30px 15px;
+  }
+
+  @media (max-width: 1024px) {
+    padding: 20px 10px;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  @media (max-width: 768px) {
+    padding: 15px;
+    justify-content: center;
+  }
+
+  @media (max-width: 480px) {
+    padding: 10px;
+    flex-direction: column;
+    align-items: center;
+  }
+`;
+
+const Column = styled.div`
+  flex: 1 1 200px;
+  margin: 0 15px;
+  text-align: left;
+  padding-bottom: 20px;
+  box-sizing: border-box;
+
+  @media (max-width: 768px) {
+    flex: 1 1 100%;
+    margin: 10px 0;
+    text-align: center;
+  }
+
+  @media (max-width: 480px) {
+    margin: 5px 0;
+  }
+`;
+
+const LogoColumn = styled(Column)`
+  flex: 1 1 250px;
+  margin-right: 20px;
+  text-align: left;
+
+  @media (max-width: 768px) {
+    flex: 1 1 100%;
+    text-align: center;
+    margin: 20px 0;
+  }
+
+  img {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+`;
+
+const SectionTitle = styled.p`
+  font-weight: bold;
+  margin-bottom: 15px;
+  font-size: 1.2rem;
+  color: black;
+  text-align: center;
+
+  @media (max-width: 768px) {
+    font-size: 1.1rem;
+  }
+`;
+
+const LinkItem = styled.a<{ hover: boolean }>`
+  display: block;
+  margin: 8px 0;
+  font-size: 1rem;
+  color: darkblue;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  text-decoration: ${(props) => (props.hover ? "underline" : "none")};
+  text-align: center;
+  &:hover {
+    text-decoration: underline;
+  }
+
+  @media (max-width: 768px) {
+    font-size: 0.9rem;
+  }
+`;
+
+const ContactItem = styled.div`
+  margin: 8px 0;
+  font-size: 1rem;
+  color: black;
+  text-align: center;
+
+  @media (max-width: 768px) {
+    font-size: 0.9rem;
+  }
+`;
 
 export default Footer;

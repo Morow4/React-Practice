@@ -120,7 +120,7 @@ const SideBar: FC<SideBarProps> = ({ isOpen, setIsOpen }) => {
         <SidebarItem href="#">
           <HiCog /> <span>{isOpen && "Settings"}</span>
         </SidebarItem>
-        <SidebarItem href="#">
+        <SidebarItem href="/login">
           <HiLogout /> <span>{isOpen && "Logout"}</span>
         </SidebarItem>
       </div>
