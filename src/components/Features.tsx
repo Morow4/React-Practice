@@ -1,9 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
-import lvBuilding from "../assets/Lvbuilding.jpg"; // Correct import
-import { FaAlignJustify } from "react-icons/fa";
+import lvBuilding from "../assets/Lvbuilding.jpg"; // Placeholder image
 
-// Header Section
+// Styled components
 const Header = styled.header`
   background-color: transparent;
   color: darkblue;
@@ -14,11 +13,14 @@ const Header = styled.header`
 
   @media screen and (max-width: 768px) {
     font-size: 20px;
-    padding: 15px;
+    padding: 20px;
+  }
+
+  @media screen and (max-width: 480px) {
+    font-size: 18px;
   }
 `;
 
-// Navigation Bar Section
 const NavigationBar = styled.nav`
   margin: 50px;
   background-color: transparent;
@@ -32,15 +34,19 @@ const NavigationBar = styled.nav`
 
 const NavList = styled.ul`
   display: flex;
-  justify-content: space-evenly; /* Evenly spaces out the navigation items */
+  justify-content: space-evenly;
   list-style: none;
   margin: 0;
   padding: 0;
-  width: 100%; /* Ensures the ul takes up the whole width of the container */
+  width: 100%; 
 
   @media screen and (max-width: 768px) {
     flex-direction: column;
     align-items: center;
+  }
+
+  @media screen and (max-width: 480px) {
+    flex-direction: column;
   }
 `;
 
@@ -48,7 +54,7 @@ const NavItem = styled.li`
   color: darkblue;
   font-size: 16px;
   cursor: pointer;
-  text-align: center; /* Ensures the text inside each item is centered */
+  text-align: center; 
 
   &:hover {
     text-decoration: underline;
@@ -58,17 +64,31 @@ const NavItem = styled.li`
     font-size: 14px;
     margin: 10px 0;
   }
+
+  @media screen and (max-width: 480px) {
+    font-size: 12px;
+  }
 `;
 
-// Main Content and Photo Section
-const MainContent = styled.div`
+// MainContent styled component now accepts `isReversed` prop
+const MainContent = styled.div<{ isReversed: boolean }>`
   display: flex;
   justify-content: space-between;
   padding: 20px;
 
   @media screen and (max-width: 768px) {
     flex-direction: column;
-    padding: 15px;
+    padding: 20px;
+  }
+
+  ${({ isReversed }) =>
+    isReversed &&
+    `
+    flex-direction: row-reverse;
+  `}
+
+  @media screen and (max-width: 480px) {
+    padding: 10px;
   }
 `;
 
@@ -80,6 +100,11 @@ const Content = styled.div`
   @media screen and (max-width: 768px) {
     width: 100%;
     padding: 15px;
+  }
+
+  @media screen and (max-width: 480px) {
+    width: 100%;
+    padding: 10px;
   }
 `;
 
@@ -93,16 +118,73 @@ const Photo = styled.div`
     width: 100%;
     margin-top: 20px;
   }
+
+  @media screen and (max-width: 480px) {
+    margin-top: 10px;
+  }
 `;
 
 const PhotoImage = styled.img`
   width: 100%;
-  height: auto; /* Ensure the image keeps its aspect ratio */
+  height: auto;
   border-radius: 8px;
+
+  @media screen and (max-width: 768px) {
+    width: 80%;
+  }
+
+  @media screen and (max-width: 480px) {
+    width: 100%;
+  }
 `;
 
 // Features Component
 const Features: React.FC = () => {
+  // Data for features
+  const featureData = [
+    {
+      name: "Work Order",
+      description:
+        "A Computerized Maintenance Management System (CMMS) helps automate the creation, tracking, and completion of tasks. It allows for easier generation, assignment, and monitoring of work orders in real-time.",
+      image: lvBuilding,
+    },
+    {
+      name: "Asset Management",
+      description:
+        "Asset Management involves tracking and managing assets efficiently. This helps improve asset lifespan and performance by keeping an organized record of repairs, maintenance, and replacements.",
+      image: lvBuilding,
+    },
+    {
+      name: "Preventive Maintenance",
+      description:
+        "Preventive Maintenance ensures equipment is maintained before it fails. Scheduled maintenance reduces downtime and helps prolong the life of machinery, thereby saving on long-term repair costs.",
+      image: lvBuilding,
+    },
+    {
+      name: "Reports and Dashboard",
+      description:
+        "Reports and Dashboards provide real-time insights into the performance and maintenance of assets. It helps managers make data-driven decisions and track performance KPIs effectively.",
+      image: lvBuilding,
+    },
+    {
+      name: "Facility Scheduling",
+      description:
+        "Facility Scheduling helps in planning and managing the use of different facilities. It allows for optimal scheduling, ensuring that resources are used efficiently without conflicts.",
+      image: lvBuilding,
+    },
+  ];
+
+  // Set default selected feature to Work Order (index 0)
+  const [selectedFeature, setSelectedFeature] = useState(0);
+
+  // Handle navigation item click
+  const handleNavItemClick = (index: number) => {
+    setSelectedFeature(index); // Always select the clicked item
+  };
+
+  // Logic to alternate the positions for large screens
+  const isReversed = selectedFeature % 2 === 1;
+
   return (
     <div>
       {/* Header Section */}
@@ -113,19 +195,18 @@ const Features: React.FC = () => {
       {/* Navigation Bar Section */}
       <NavigationBar>
         <NavList>
-          <NavItem>Work Order</NavItem>
-          <NavItem>Asset Management</NavItem>
-          <NavItem>Preventive Maintenance</NavItem>
-          <NavItem>Reports and Dashboard</NavItem>
-          <NavItem>Facility Scheduling</NavItem>
+          {featureData.map((feature, index) => (
+            <NavItem key={index} onClick={() => handleNavItemClick(index)}>
+              {feature.name}
+            </NavItem>
+          ))}
         </NavList>
       </NavigationBar>
 
       {/* Main Content and Photo Section */}
-      <MainContent>
-        {/* Content Section */}
+      <MainContent isReversed={isReversed}>
         <Content>
-          <h1>Work Order</h1>
+          <h1>{featureData[selectedFeature].name}</h1>
           <br />
           <p
             style={{
@@ -135,22 +216,15 @@ const Features: React.FC = () => {
               color: "#555",
             }}
           >
-            A Computerized Maintenance Management System (CMMS) revolutionizes
-            work order management by automating the creation, tracking, and
-            completion of tasks. With a CMMS, maintenance teams can easily
-            generate work orders, assign them to the right personnel, and
-            monitor progress in real time. This leads to faster response times,
-            improved organization, and reduced errors. The system helps
-            prioritize work orders based on urgency, track parts and resources,
-            and ensure that no task is overlooked, ultimately boosting
-            operational efficiency and equipment reliability.
+            {featureData[selectedFeature].description}
           </p>
         </Content>
 
-        {/* Photo Section */}
         <Photo>
-          <PhotoImage src={lvBuilding} alt="Building" />{" "}
-          {/* Correct usage of imported image */}
+          <PhotoImage
+            src={featureData[selectedFeature].image}
+            alt={featureData[selectedFeature].name}
+          />
         </Photo>
       </MainContent>
     </div>

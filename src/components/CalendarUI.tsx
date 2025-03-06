@@ -7,12 +7,10 @@ import Calendar from "./ui/Calendar";
 
 const CalendarUI: React.FC = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(true); // Sidebar open/close state
-  const name = "John Doe"; // Replace with dynamic user data if available
+  // const name = "John Doe";
 
-  // Adjust sidebar state based on screen size
   useEffect(() => {
     const handleResize = () => {
-      // Collapse sidebar by default on smaller screens (below 768px)
       if (window.innerWidth <= 768) {
         setIsSidebarOpen(false);
       } else {
@@ -20,13 +18,10 @@ const CalendarUI: React.FC = () => {
       }
     };
 
-    // Add event listener for resize
     window.addEventListener("resize", handleResize);
 
-    // Call once initially to set correct state on page load
     handleResize();
 
-    // Clean up event listener on component unmount
     return () => {
       window.removeEventListener("resize", handleResize);
     };

@@ -1,7 +1,8 @@
 // import React, { useState } from 'react';
-// import './OTPComponent.css';
 
-// const OTPComponent = ({ length = 6, onSubmit }) => {
+// // OTP component UI only (No backend logic)
+
+// const OTP = ({ length = 6 }) => {
 //   const [otp, setOtp] = useState(Array(length).fill(''));
 
 //   // Handle input change
@@ -21,13 +22,13 @@
 //     }
 //   };
 
-//   // Handle form submission
+//   // Handle form submission (just logs the OTP for now)
 //   const handleSubmit = (e) => {
 //     e.preventDefault();
-//     // Join the OTP array to a single string
 //     const otpString = otp.join('');
 //     if (otpString.length === length) {
-//       onSubmit(otpString); // Send the OTP to the parent component or API
+//       // Instead of calling a backend, we'll just log the OTP
+//       console.log('OTP Submitted:', otpString);
 //     } else {
 //       alert('Please enter a valid OTP');
 //     }
@@ -42,10 +43,61 @@
 //     }
 //   };
 
+//   const otpContainerStyle = {
+//     display: 'flex',
+//     justifyContent: 'center',
+//     alignItems: 'center',
+//     height: '100vh',
+//     backgroundColor: '#f0f0f0',
+//   };
+
+//   const formStyle = {
+//     display: 'flex',
+//     flexDirection: 'column',
+//     justifyContent: 'center',
+//     alignItems: 'center',
+//     backgroundColor: '#fff',
+//     padding: '20px',
+//     borderRadius: '8px',
+//     boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
+//   };
+
+//   const otpInputsStyle = {
+//     display: 'flex',
+//     justifyContent: 'space-between',
+//     marginBottom: '20px',
+//   };
+
+//   const otpInputStyle = {
+//     width: '40px',
+//     height: '40px',
+//     textAlign: 'center',
+//     fontSize: '20px',
+//     border: '1px solid #ccc',
+//     borderRadius: '4px',
+//     margin: '0 5px',
+//     outline: 'none',
+//   };
+
+//   const otpSubmitBtnStyle = {
+//     padding: '10px 20px',
+//     backgroundColor: '#4CAF50',
+//     color: '#fff',
+//     border: 'none',
+//     borderRadius: '4px',
+//     cursor: 'pointer',
+//     fontSize: '16px',
+//     transition: 'background-color 0.3s',
+//   };
+
+//   const otpSubmitBtnHoverStyle = {
+//     backgroundColor: '#45a049',
+//   };
+
 //   return (
-//     <div className="otp-container">
-//       <form onSubmit={handleSubmit}>
-//         <div className="otp-inputs">
+//     <div style={otpContainerStyle}>
+//       <form onSubmit={handleSubmit} style={formStyle}>
+//         <div style={otpInputsStyle}>
 //           {otp.map((digit, index) => (
 //             <input
 //               key={index}
@@ -55,15 +107,22 @@
 //               value={digit}
 //               onChange={(e) => handleChange(e, index)}
 //               onKeyDown={(e) => handleBackspace(e, index)}
-//               className="otp-input"
+//               style={otpInputStyle}
 //               autoFocus={index === 0} // Auto-focus the first input field
 //             />
 //           ))}
 //         </div>
-//         <button type="submit" className="otp-submit-btn">Submit</button>
+//         <button
+//           type="submit"
+//           style={otpSubmitBtnStyle}
+//           onMouseOver={(e) => (e.target.style.backgroundColor = otpSubmitBtnHoverStyle.backgroundColor)}
+//           onMouseOut={(e) => (e.target.style.backgroundColor = otpSubmitBtnStyle.backgroundColor)}
+//         >
+//           Submit
+//         </button>
 //       </form>
 //     </div>
 //   );
 // };
 
-// export default OTPComponent;
+// export default OTP;
