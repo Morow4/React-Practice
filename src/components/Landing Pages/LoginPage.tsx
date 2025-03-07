@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
-import "./LoginPage.css"; // Import the CSS file
+import "../../styles/LoginPage.css";  // Import the external CSS file
 
 function LoginPage() {
   const [email, setEmail] = useState("");
@@ -51,9 +51,7 @@ function LoginPage() {
           <form onSubmit={handleSubmit}>
             {error && <div className="error-message">{error}</div>}
             <div className="form-group">
-              <label htmlFor="email" className="label">
-                Email
-              </label>
+              <label htmlFor="email" className="label">Email</label>
               <input
                 type="email"
                 id="email"
@@ -66,9 +64,7 @@ function LoginPage() {
             </div>
 
             <div className="form-group">
-              <label htmlFor="password" className="label">
-                Password
-              </label>
+              <label htmlFor="password" className="label">Password</label>
               <input
                 type="password"
                 id="password"
@@ -87,7 +83,7 @@ function LoginPage() {
           <div className="footer">
             <p>
               Don't have an account?{" "}
-              <Link to="/registration" className="sign-up-link">
+              <Link to="/registration" className="signup-link">
                 Sign Up
               </Link>
             </p>
@@ -96,7 +92,7 @@ function LoginPage() {
       </div>
 
       {/* Right Side - Image */}
-      <div className="image-container" />
+      <div className="image-container"></div>
     </div>
   );
 }
