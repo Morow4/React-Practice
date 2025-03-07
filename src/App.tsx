@@ -5,15 +5,15 @@ import {
   useLocation,
 } from "react-router-dom";
 import { useState } from "react";
-import LandingPage from "./components/LandingPage";
-import LoginPage from "./components/LoginPage";
-import NavigationBar from "./components/NavigationBar";
-import RegistrationPage from "./components/RegistrationPage";
+import LandingPage from "./components/Landing Pages/LandingPage";
+import LoginPage from "./components/Landing Pages/LoginPage";
+import NavigationBar from "./components/Landing Pages/NavigationBar";
+import RegistrationPage from "./components/Landing Pages/RegistrationPage";
 import SideBar from "./components/SideBar";
 import Dashboard from "./components/Dashboard";
 import CalendarUI from "./components/CalendarUI";
 import FMUI from "./components/FMUI";
-import AboutUs from "./components/AboutUs";
+import AboutUs from "./components/Landing Pages/AboutUs";
 
 const AppLayout = () => {
   const location = useLocation();

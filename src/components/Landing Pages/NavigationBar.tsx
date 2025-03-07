@@ -3,7 +3,7 @@ import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import { Link } from "react-router-dom";
-import LVlogo from "../assets/LVlogo.jpg"; // Import the logo
+import LVlogo from "../../assets/LVlogo.jpg";
 
 function NavigationBar() {
   return (

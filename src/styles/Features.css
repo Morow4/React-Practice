@@ -1,0 +1,163 @@
+/* Features.css */
+header {
+    background-color: transparent;
+    color: darkblue;
+    padding: 20px;
+    text-align: center;
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+  
+  @media screen and (max-width: 768px) {
+    header {
+      font-size: 20px;
+      padding: 20px;
+    }
+  }
+  
+  @media screen and (max-width: 480px) {
+    header {
+      font-size: 18px;
+    }
+  }
+  
+  .navigation-bar {
+    margin: 50px;
+    background-color: transparent;
+    padding: 20px;
+  }
+  
+  @media screen and (max-width: 768px) {
+    .navigation-bar {
+      padding: 10px;
+      margin: 20px;
+    }
+  }
+  
+  .nav-list {
+    display: flex;
+    justify-content: space-evenly;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+  }
+  
+  @media screen and (max-width: 768px) {
+    .nav-list {
+      flex-direction: column;
+      align-items: center;
+    }
+  }
+  
+  @media screen and (max-width: 480px) {
+    .nav-list {
+      flex-direction: column;
+    }
+  }
+  
+  .nav-item {
+    color: darkblue;
+    font-size: 16px;
+    cursor: pointer;
+    text-align: center;
+  }
+  
+  .nav-item:hover {
+    text-decoration: underline;
+  }
+  
+  @media screen and (max-width: 768px) {
+    .nav-item {
+      font-size: 14px;
+      margin: 10px 0;
+    }
+  }
+  
+  @media screen and (max-width: 480px) {
+    .nav-item {
+      font-size: 12px;
+    }
+  }
+  
+  .main-content {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+  }
+  
+  @media screen and (max-width: 768px) {
+    .main-content {
+      flex-direction: column;
+      padding: 20px;
+    }
+  }
+  
+  .main-content.reversed {
+    flex-direction: row-reverse;
+  }
+  
+  @media screen and (max-width: 480px) {
+    .main-content {
+      padding: 10px;
+    }
+  }
+  
+  .content {
+    width: 50%;
+    padding: 20px;
+    height: auto;
+  }
+  
+  @media screen and (max-width: 768px) {
+    .content {
+      width: 100%;
+      padding: 15px;
+    }
+  }
+  
+  @media screen and (max-width: 480px) {
+    .content {
+      width: 100%;
+      padding: 10px;
+    }
+  }
+  
+  .photo {
+    width: 40%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  @media screen and (max-width: 768px) {
+    .photo {
+      width: 100%;
+      margin-top: 20px;
+    }
+  }
+  
+  @media screen and (max-width: 480px) {
+    .photo {
+      margin-top: 10px;
+    }
+  }
+  
+  .photo img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+  }
+  
+  @media screen and (max-width: 768px) {
+    .photo img {
+      width: 80%;
+    }
+  }
+  
+  @media screen and (max-width: 480px) {
+    .photo img {
+      width: 100%;
+    }
+  }
+  
