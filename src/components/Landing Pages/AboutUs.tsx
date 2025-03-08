@@ -1,7 +1,6 @@
 import React from "react";
 import styled from "styled-components";
 import Lvbuilding from "../../assets/Lvbuilding.jpg";
- // Styled components for layout and styling
 const AboutUsWrapper = styled.div`
   display: flex;
   flex-direction: row;

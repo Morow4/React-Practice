@@ -1,4 +1,3 @@
-// import React from "react";
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
@@ -11,11 +10,7 @@ function NavigationBar() {
       <Container>
         {/* Logo and Branding */}
         <Navbar.Brand href="#logo" style={styles.brand}>
-          <img
-            src={LVlogo} // Use the imported logo here
-            alt="La Verdad Logo"
-            style={styles.logo}
-          />
+          <img src={LVlogo} alt="La Verdad Logo" style={styles.logo} />
           La Verdad Christian College
         </Navbar.Brand>
 
@@ -37,21 +32,8 @@ function NavigationBar() {
             </Nav.Link>
           </Nav>
 
-          {/* Right-aligned Register and Login Buttons */}
+          {/* Right-aligned login button*/}
           <Nav className="ms-auto" style={styles.authButtons}>
-            <Nav.Link
-              as={Link}
-              to="/registration"
-              style={{ ...styles.navLink, ...styles.registerLink }}
-            >
-              <button
-                className="btn btn-outline-primary"
-                style={styles.registerButton}
-              >
-                Register
-              </button>
-            </Nav.Link>
-            {/* No separator */}
             <Nav.Link as={Link} to="/login" style={styles.navLink}>
               <button className="btn btn-primary" style={styles.authButton}>
                 Login
@@ -90,36 +72,12 @@ const styles = {
     color: "#001f3d",
     fontWeight: "normal",
     marginRight: "20px",
-    transition: "text-decoration 0.3s ease",
+    textDecoration: "none",
+    transition: "text-decoration 0.3s ease-in-out",
   },
-  navLinksHover: {
-    // textDecoration: "underline",
-  },
-  registerLink: {
+  navLinkHover: {
     textDecoration: "underline",
-    fontWeight: "normal",
-    marginRight: "5px",
   },
-  registerButton: {
-    fontWeight: "400",
-    padding: "0px",
-    border: "none",
-    borderRadius: "0",
-    display: "inline-block",
-    verticalAlign: "middle",
-    lineHeight: "normal",
-    background: "transparent",
-    cursor: "pointer",
-    textDecoration: "underline",
-    transition: "none",
-    color: "darkblue",
-  },
-
-  registerButtonHover: {
-    backgroundColor: "transparent",
-    color: "#001f3d",
-  },
-
   authButton: {
     fontWeight: "500",
     padding: "8px 20px",
@@ -133,5 +91,14 @@ const styles = {
     gap: "0px",
   },
 };
+
+// Inject CSS for hover effect
+const styleTag = document.createElement("style");
+styleTag.innerHTML = `
+  .nav-link:hover {
+    text-decoration: underline !important;
+  }
+`;
+document.head.appendChild(styleTag);
 
 export default NavigationBar;

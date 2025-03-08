@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import SideBar from "./SideBar";
+import SideBar from "./ui/SideBar";
 import SearchFilter from "./SearchFilter";
 
 const Dashboard: React.FC = () => {

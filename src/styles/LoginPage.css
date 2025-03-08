@@ -97,47 +97,46 @@ html, body {
     text-decoration: underline;
 }
 
-/* Image Container Styling */
 .image-container {
     flex: 1;
     background-image: url('../assets/Lvbuilding.jpg');
-    background-size: cover; /* Ensures the image covers the entire space */
+    background-size: cover; 
     background-position: center;
-    height: auto; /* Ensures it stretches to full viewport height */
-    width: 100%; /* Ensure it takes up full width */
+    height: auto; 
+    width: 100%; 
     border-radius: 0;
     box-sizing: border-box; 
     display: block;
 }
 
-/* Media Query for Small Screens */
+
 @media (max-width: 768px) {
     .login-container {
-        flex-direction: column; /* Stack the form and image vertically on small screens */
+        flex-direction: column;
     }
 
     .form-container {
-        padding: 20px; /* Reduce padding on small screens */
+        padding: 20px;
     }
 
     .image-container {
-        height: 50vh; /* Adjust the height of the image when it's at the bottom */
+        height: 50vh; 
     }
 
     .form-card {
-        padding: 20px; /* Adjust padding of the form card for small screens */
+        padding: 20px; 
     }
 }
 
-/* Media Query for Larger Screens */
+
 @media (min-width: 1024px) {
     .login-container {
-        justify-content: flex-start; /* Keep the form on the left */
+        justify-content: flex-start; 
     }
 
     .image-container {
-        height: 100vh; /* Ensure image takes the full height of the viewport */
-        width: 50%; /* Limit image container width */
-        max-width: 700px; /* You can set a max width for the image container */
+        height: 100vh;
+        width: 50%;
+        max-width: 700px;
     }
 }
