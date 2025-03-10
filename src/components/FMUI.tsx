@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import SideBar from "./ui/SideBar";
-import SearchFilter from "./SearchFilter";
+import SearchFilter from "./ui/SearchFilter";
 import FacilityManagement from "./FacilityManagement";
 
 const FMUI: React.FC = () => {

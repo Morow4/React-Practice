@@ -1,9 +1,9 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import SideBar from "./ui/SideBar";
+import SideBar from "./SideBar";
 import SearchFilter from "./SearchFilter";
-import Calendar from "./ui/Calendar";
+import Calendar from "./Calendar";
 
 const CalendarUI: React.FC = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(true); // Sidebar open/close state

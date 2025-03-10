@@ -10,8 +10,8 @@ import LoginPage from "./components/Landing Pages/LoginPage";
 import NavigationBar from "./components/Landing Pages/NavigationBar";
 import RegistrationPage from "./components/Landing Pages/RegistrationPage";
 import SideBar from "./components/ui/SideBar";
-import Dashboard from "./components/Dashboard";
-import CalendarUI from "./components/CalendarUI";
+import Dashboard from "./components/ui/Dashboard";
+import CalendarUI from "./components/ui/CalendarUI";
 import FMUI from "./components/FMUI";
 import AboutUs from "./components/Landing Pages/AboutUs";
 

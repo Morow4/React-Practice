@@ -11,7 +11,7 @@ function RegistrationPage() {
     contactNumber: "",
     password: "",
     confirmPassword: "",
-    agreeToPrivacyPolicy: false, // Add state for checkbox
+    agreeToPrivacyPolicy: false,
   });
 
   const [error, setError] = useState<string | null>(null);
@@ -22,7 +22,6 @@ function RegistrationPage() {
   ) => {
     const { name, value, type, checked } = e.target as HTMLInputElement;
 
-    // Ensure type is cast correctly for checkboxes
     if (type === "checkbox") {
       setFormData({
         ...formData,
@@ -35,7 +34,6 @@ function RegistrationPage() {
       });
     }
 
-    // Clear error message as user modifies input
     if (error) {
       setError(null);
     }
@@ -72,14 +70,12 @@ function RegistrationPage() {
       return false;
     }
 
-    // Contact number validation (must start with 09 and have 11 digits)
     const contactNumberPattern = /^09\d{9}$/;
     if (!contactNumberPattern.test(contactNumber)) {
       setError("Contact number must be 11 digits and start with 09.");
       return false;
     }
 
-    // Password validation: minimum 8 characters, 1 uppercase, and 1 number
     const passwordPattern = /^(?=.*[A-Z])(?=.*\d)[A-Za-z\d]{8,}$/;
     if (!passwordPattern.test(password)) {
       setError(
@@ -88,7 +84,6 @@ function RegistrationPage() {
       return false;
     }
 
-    // Confirm password validation
     if (password !== confirmPassword) {
       setError("Password and Confirm Password do not match.");
       return false;

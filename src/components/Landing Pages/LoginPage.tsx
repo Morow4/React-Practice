@@ -14,13 +14,11 @@ function LoginPage() {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
 
-    // Validate email and password fields
     if (!email || !password) {
       setError("Please enter both email and password.");
       return;
     }
 
-    // Email validation: check if it's a valid email format
     const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
     if (!emailPattern.test(email)) {
       setError("Please enter a valid email address.");

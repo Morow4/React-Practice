@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import lvBuilding from "../../assets/lvbuilding.jpg";
-import "../../styles/Features.css"; // Corrected import path for CSS
+import "../../styles/Features.css";
 
 const Features: React.FC = () => {
   const featureData = [
